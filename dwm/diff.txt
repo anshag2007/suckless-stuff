@@ -1,0 +1,79 @@
+2c2
+< #include <X11/XF86keysym.h>
+---
+> 
+4a5
+> static const unsigned int gappx     = 1;        /* gap pixel between windows */
+8,18c9,10
+< static const unsigned int gappx = 10;
+< static const char *up_vol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%",   NULL };
+< static const char *down_vol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%",   NULL };
+< static const char *mute_vol[] = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
+< static const char *brighter[] = { "brightnessctl", "set", "10%+", NULL };
+< static const char *dimmer[]   = { "brightnessctl", "set", "10%-", NULL };
+< static const char *toggleplay[]   = { "playerctl", "play-pause", NULL, NULL };
+< static const char *audio_prev[]   = { "playerctl", "previous", NULL, NULL };
+< static const char *audio_next[]   = { "playerctl", "next", NULL, NULL };
+< static const char *fonts[]          = { "Iosevka Nerd Font:size=12" };
+< static const char dmenufont[]       = "Iosevka Nerd Font:size=12";
+---
+> static const char *fonts[]          = { "monospace:size=10" };
+> static const char dmenufont[]       = "monospace:size=10";
+28a21
+> 
+30,37c23,24
+< 	/*"mpd-notification", NULL,*/
+< 	/*"hsetroot", "-center", "/usr/home/bit6tream/pic/wallapper.png", NULL,*/
+< 	/*"xrdb", "/usr/home/bit6tream/.config/X/Xresources", NULL,*/
+< 	/*"sh", "-c", "while :; do dwmstatus.sh -; sleep 60; done", NULL,*/
+< 	/*"dunst", NULL,*/
+< 	/*"picom", NULL,*/
+<     "flameshot",
+< 	NULL
+---
+> 	"st", NULL,
+> 	NULL /* terminate */
+60a48
+> 	{ "III",      horizontal },
+67,68c55
+< #define MODKEY Mod4Mask
+< #define ALTKEY Mod1Mask
+---
+> #define MODKEY Mod1Mask
+81c68
+< static const char *termcmd[]  = { "alacritty", NULL };
+---
+> static const char *termcmd[]  = { "st", NULL };
+85,86c72,73
+< 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+< 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+---
+> 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+> 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+91c78
+< 	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
+---
+> 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+94c81
+< 	{ ALTKEY,                       XK_Return, zoom,           {0} },
+---
+> 	{ MODKEY,                       XK_Return, zoom,           {0} },
+96c83
+< 	{ MODKEY,                       XK_q,      killclient,     {0} },
+---
+> 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+108,121d94
+<     // Extras
+< 
+<     { 0,                            XF86XK_AudioMute,         spawn,      {.v = mute_vol } },
+<     { 0,                            XF86XK_AudioLowerVolume,  spawn,      {.v = down_vol } },
+<     { 0,                            XF86XK_AudioRaiseVolume,  spawn,      {.v = up_vol } },
+<     { 0,                            XF86XK_MonBrightnessDown, spawn,      {.v = dimmer } },
+<     { 0,                            XF86XK_MonBrightnessUp,   spawn,      {.v = brighter } },
+<     { 0,                            XF86XK_AudioPlay,         spawn,      {.v = toggleplay } },
+<     { 0,                            XF86XK_AudioPause,        spawn,      {.v = toggleplay } },
+<     { 0,                            XF86XK_AudioPrev,         spawn,      {.v = audio_prev } },
+<     { 0,                            XF86XK_AudioNext,         spawn,      {.v = audio_next } },
+<     { 0,                            XK_Print,                 spawn,      SHCMD("/sbin/flameshot screen") },
+<     { ShiftMask,                    XK_Print,                 spawn,      SHCMD("/sbin/flameshot gui") },
+< 
