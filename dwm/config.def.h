@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
@@ -48,7 +48,7 @@ static const char *const autostart[] = {
     /*"setxkbmap", "-option", "\"caps:escape_shifted_capslock\"", NULL,*/
     "/usr/lib/mate-polkit/polkit-mate-authentication-agent-1", NULL,
     "xfce4-power-manager", NULL,
-    "picom", NULL,
+    /*"picom", NULL,*/
     /*"xinput", "set-prop", "\"Synaptics TM3127-001\" \"libinput Tapping Enabled\" 1", NULL,*/
     "dwmblocks", NULL,
     "/usr/lib/xfce4/notifyd/xfce4-notifyd", NULL,
